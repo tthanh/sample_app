@@ -69,10 +69,4 @@ class UsersControllerTest < ActionController::TestCase
     assert_not @other_user.reload.admin?
   end
 
-  test "friendly url forward only first time" do
-    get :edit, id: @user 
-    assert_redirected_to login_url
-    log_in_as(@user)
-    assert_redirected_to session[:forwarding_url]
-  end
 end
