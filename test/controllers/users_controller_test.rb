@@ -69,4 +69,16 @@ class UsersControllerTest < ActionController::TestCase
     assert_not @other_user.reload.admin?
   end
 
+  test "should return all activated user" do
+    @user.toggle!(:activated)
+    get :index
+    assert_no_match @user.name, response.body
+  end
+
+  test "should redirect if show non activated user" do
+    @user.toggle!(:activated)
+    get :show, id: @user.id
+    assert_redirected_to root_url
+  end
+
 end
