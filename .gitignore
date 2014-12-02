@@ -16,3 +16,4 @@
 /tmp
 # Ignore Spring files.
 /spring/*.pid
+/public/uploads
